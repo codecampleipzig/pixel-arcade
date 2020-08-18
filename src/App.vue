@@ -1,32 +1,77 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
+    <header>
+      <div><router-link to="/">Games</router-link></div>
+      <div class="score">{{ $store.state.score }} Points</div>
+    </header>
     <router-view />
   </div>
 </template>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+
+body {
+  font-family: "Press Start 2P", cursive;
+  background-color: black;
+  color: white;
 }
 
-#nav {
-  padding: 30px;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1.5;
 }
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
+a {
+  color: cyan;
+  text-decoration: none;
 }
 
-#nav a.router-link-exact-active {
-  color: #42b983;
+.router-link-exact-active {
+  text-decoration: underline;
+}
+
+input[type="text"] {
+  font-size: 1rem;
+  outline: none;
+  background-color: black;
+  color: white;
+  border: 2px solid white;
+  font-family: inherit;
+  padding: 0.5rem;
+}
+
+label {
+  display: block;
+  font-size: 0.875rem;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+}
+
+button {
+  background-color: black;
+  font-family: inherit;
+  font-size: 1.25rem;
+  padding: 0.5rem;
+  border: 2px solid white;
+  color: white;
+  outline: none;
+  cursor: pointer;
+}
+
+button:hover {
+  border-color: cyan;
+  color: cyan;
+}
+
+button:active {
+  transform: scale(0.9);
 }
 </style>
