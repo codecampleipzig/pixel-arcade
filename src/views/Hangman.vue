@@ -21,7 +21,7 @@
           :key="letter"
           @click="guess(letter)"
           :class="{
-            disabled: guesses.includes(letter),
+            disabled: guesses.includes(letter)
           }"
         >
           {{ letter }}
@@ -56,7 +56,7 @@ export default {
       maxNumWrongGuesses: 7,
       word: "",
       guesses: [],
-      alphabet: generateAlphabet(),
+      alphabet: generateAlphabet()
     };
   },
   methods: {
@@ -65,26 +65,23 @@ export default {
       this.guesses.push(letter);
     },
     handleWin() {
-      this.$store.dispatch("gameWon", {
-        game: "hangman",
-        points: 10,
-      });
+      console.log("You won");
     },
     resetGame() {
       this.word = randomWord();
       this.guesses = [];
-    },
+    }
   },
   computed: {
     wrongGuesses() {
       return this.guesses.filter(
-        (letter) => !this.word.toUpperCase().includes(letter)
+        letter => !this.word.toUpperCase().includes(letter)
       );
     },
     revealedWord() {
       return this.word
         .split("")
-        .map((letter) =>
+        .map(letter =>
           this.guesses.includes(letter.toUpperCase()) ? letter : "_"
         )
         .join("");
@@ -94,18 +91,18 @@ export default {
     },
     lost() {
       return this.wrongGuesses.length >= this.maxNumWrongGuesses;
-    },
+    }
   },
   watch: {
     won(newValue) {
       if (newValue) {
         this.handleWin();
       }
-    },
+    }
   },
   created() {
     this.resetGame();
-  },
+  }
 };
 </script>
 

@@ -2,7 +2,6 @@
   <div id="app">
     <header>
       <div><router-link to="/">Games</router-link></div>
-      <div class="score">{{ $store.state.score }} Points</div>
     </header>
     <router-view />
   </div>
